@@ -1,0 +1,19 @@
+EditorConfig for VS Code
+ESlint
+Prettier - Code formatter
+Docker
+
+DotENV
+
+Material Icon Theme
+Dracula Official
+
+
+ctrl + shift + p
+preferences: Open Settings(JSON)
+
+ou add .vscode settings.json
+
+
+ctrl + shift + L
+ctrl + D

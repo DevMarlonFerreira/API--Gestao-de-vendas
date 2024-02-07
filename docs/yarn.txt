@@ -1,0 +1,11 @@
+yarn add typescript ts-node-dev @types/node tsconfig-paths -D
+
+yarn tsc --init --rootDir src --outDir build \ --esModuleInterop --resolveJsonModule --lib es6 \ --module commonjs --allowJs true --noImplicitAny true
+
+yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+yarn add prettier -D
+
+yarn add eslint-config-prettier eslint-plugin-prettier -D
+
+npx npm-check -u

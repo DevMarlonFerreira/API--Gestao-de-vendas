@@ -1,0 +1,4 @@
+yarn typeorm migration:run -- -d ./src/shared/typeorm/ormconfig.ts
+
+yarn typeorm -- -d src/shared/infra/typeorm/ormconfig.ts migration:run
+yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateTesteTotal

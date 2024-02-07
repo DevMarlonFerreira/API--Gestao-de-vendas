@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    entrypoint: .docker/entrypoint.sh
+    container_name: apivendas-app
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/home/node/app
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    tty: true
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'docker'
+    ports:
+      - '5432:5432'
+    networks:
+      - postgres-compose-network
+
+  redis:
+    image: 'bitnami/redis:latest'
+    container_name: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    tty: true
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'postgres@postgres.com'
+      PGADMIN_DEFAULT_PASSWORD: 'postgres'
+    ports:
+      - '16543:80'
+    depends_on:
+      - postgres
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network:
+    driver: bridge

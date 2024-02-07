@@ -1,0 +1,4 @@
+yarn jest --init
+testMatch & preset: 'ts-jest'
+
+moduleNameMapper ?

@@ -1,0 +1,11 @@
+docker start redis
+
+docker exec -it redis sh
+
+redis-cli
+
+set chave valor
+
+get chave
+
+del chave
